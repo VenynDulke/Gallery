@@ -7,40 +7,33 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Agbalumo&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    
     <script>
         tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],display:['Agbalumo','cursive']},colors:{dark:{900:'#18181b',800:'#27272a',700:'#3f3f46',600:'#52525b'},brand:{400:'#60a5fa',500:'#3b82f6',600:'#2563eb'}}}}};
     </script>
     <style>
-        body { 
-            background-color: #18181b; color: #e2e8f0; overflow-x: hidden;
-            -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;
-        }
-        img { -webkit-user-drag: none; user-drag: none; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #18181b; }
-        ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
-        .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5); border-color: #3b82f6; }
-        .text-gradient {
-            background: linear-gradient(to right, #60a5fa, #a78bfa, #f472b6);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            animation: hue 5s infinite linear;
-        }
-        @keyframes hue { from { filter: hue-rotate(0deg); } to { filter: hue-rotate(360deg); } }
-        .submenu-transition { transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out; max-height: 0; opacity: 0; overflow: hidden; }
-        .submenu-open { max-height: 500px; opacity: 1; }
-        .rotate-180 { transform: rotate(180deg); }
-        @media print { html, body { display: none !important; } }
+        body {background-color:#18181b;color:#e2e8f0;overflow-x:hidden;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
+        img {-webkit-user-drag:none;user-drag:none;pointer-events:none;}
+        .pointer-events-auto {pointer-events:auto;}
+        ::-webkit-scrollbar {width:8px;}
+        ::-webkit-scrollbar-track {background:#18181b;}
+        ::-webkit-scrollbar-thumb {background:#3f3f46;border-radius:4px;}
+        ::-webkit-scrollbar-thumb:hover {background:#3b82f6;}
+        .card-hover {transition:all 0.3s cubic-bezier(0.4,0,0.2,1);}
+        .card-hover:hover {transform:translateY(-5px);box-shadow:0 10px 25px -5px rgba(0,0,0,0.5);border-color:#3b82f6;}
+        .text-gradient {background:linear-gradient(to right,#60a5fa,#a78bfa,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:hue 5s infinite linear;}
+        @keyframes hue {from {filter:hue-rotate(0deg);} to {filter:hue-rotate(360deg);}}
+        .submenu-transition {transition:max-height 0.3s ease-in-out,opacity 0.3s ease-in-out;max-height:0;opacity:0;overflow:hidden;}
+        .submenu-open {max-height:500px;opacity:1;}
+        .rotate-180 {transform:rotate(180deg);}
+        @media print {html,body {display:none !important;}}
     </style>
 </head>
-<body class="flex h-screen w-full antialiased selection:bg-brand-500 selection:text-white" oncontextmenu="return false;">
+<body class="flex h-screen w-full antialiased selection:bg-brand-500 selection:text-white" oncontextmenu="return false;" ondragstart="return false;" onselectstart="return false;">
 
     <aside class="w-20 lg:w-64 flex-shrink-0 bg-dark-800 border-r border-dark-700 flex flex-col h-full z-20 shadow-xl overflow-hidden">
         <div class="flex-shrink-0 p-4 flex flex-row items-center border-b border-dark-700 bg-dark-800/90 relative overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-r from-brand-600/10 to-transparent pointer-events-none"></div>
-            <img src="https://xatimg.com/image/QERnZ4Mo4lAH.gif" alt="Cobra" draggable="false" class="w-12 h-12 rounded-full border-2 border-brand-500 object-cover shadow-lg relative z-10 flex-shrink-0">
+            <img src="https://xatimg.com/image/QERnZ4Mo4lAH.gif" class="w-12 h-12 rounded-full border-2 border-brand-500 object-cover shadow-lg relative z-10 flex-shrink-0 pointer-events-auto">
             <div class="ml-3 hidden lg:block relative z-10 flex-1 min-w-0">
                 <p class="text-sm font-bold text-white tracking-wide leading-tight truncate">๖ۣByCobra</p>
                 <p class="text-xs text-brand-400 mt-0.5 truncate">ID: 242020023</p>
@@ -53,50 +46,36 @@
                     <i class="ph ph-squares-four text-xl lg:text-2xl group-hover:text-brand-500 transition-colors flex-shrink-0"></i>
                     <span class="hidden lg:block ml-3 font-medium text-sm truncate">Inicio</span>
                 </button>
-                
                 <p class="hidden lg:block px-3 text-[10px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wider mt-6 mb-2 truncate">Categorías</p>
-                
                 <div class="w-full">
-                    <button onclick="toggleGifsMenu()" class="w-full flex items-center p-2 lg:p-3 rounded-lg text-gray-300 hover:text-white hover:bg-dark-700 transition-colors group">
+                    <button onclick="toggleMenu('gifs')" class="w-full flex items-center p-2 lg:p-3 rounded-lg text-gray-300 hover:text-white hover:bg-dark-700 transition-colors group">
                         <i class="ph ph-gif text-xl lg:text-2xl text-brand-400 flex-shrink-0"></i>
                         <span class="hidden lg:block ml-3 font-medium text-sm truncate">GIFS</span>
                         <i id="gifs-caret" class="ph ph-caret-down hidden lg:block ml-auto transition-transform duration-300 flex-shrink-0"></i>
                     </button>
-                    
                     <div id="gifs-submenu" class="submenu-transition hidden lg:flex flex-col space-y-1 mt-1 border-l-2 border-dark-700 ml-5 pl-2 w-full">
-                        <button onclick="changeView('gifs-new')" id="nav-gifs-new" class="nav-btn w-full flex items-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-dark-700 transition-colors">
-                            <i class="ph ph-sparkle text-lg flex-shrink-0"></i><span class="ml-3 text-sm truncate">New Style</span>
-                        </button>
-                        <button onclick="changeView('gifs-girls')" id="nav-gifs-girls" class="nav-btn w-full flex items-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-dark-700 transition-colors">
-                            <i class="ph ph-crown text-lg flex-shrink-0"></i><span class="ml-3 text-sm truncate">Girls</span>
-                        </button>
-                        <button onclick="changeView('gifs-boys')" id="nav-gifs-boys" class="nav-btn w-full flex items-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-dark-700 transition-colors">
-                            <i class="ph ph-soccer-ball text-lg flex-shrink-0"></i><span class="ml-3 text-sm truncate">Boys</span>
-                        </button>
-                        <button onclick="changeView('gifs-dj')" id="nav-gifs-dj" class="nav-btn w-full flex items-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-dark-700 transition-colors">
-                            <i class="ph ph-headphones text-lg flex-shrink-0"></i><span class="ml-3 text-sm truncate">DJ</span>
-                        </button>
-                        <button onclick="changeView('gifs-lovers')" id="nav-gifs-lovers" class="nav-btn w-full flex items-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-dark-700 transition-colors">
-                            <i class="ph ph-heart text-lg flex-shrink-0"></i><span class="ml-3 text-sm truncate">Lovers</span>
-                        </button>
-                        <button onclick="changeView('gifs-christmas')" id="nav-gifs-christmas" class="nav-btn w-full flex items-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-dark-700 transition-colors">
-                            <i class="ph ph-tree-evergreen text-lg flex-shrink-0"></i><span class="ml-3 text-sm truncate">Christmas</span>
-                        </button>
-                        <button onclick="changeView('gifs-halloween')" id="nav-gifs-halloween" class="nav-btn w-full flex items-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-dark-700 transition-colors">
-                            <i class="ph ph-ghost text-lg flex-shrink-0"></i><span class="ml-3 text-sm truncate">Halloween</span>
-                        </button>
-                        <button onclick="changeView('gifs-mixed')" id="nav-gifs-mixed" class="nav-btn w-full flex items-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-dark-700 transition-colors">
-                            <i class="ph ph-trophy text-lg flex-shrink-0"></i><span class="ml-3 text-sm truncate">Mixed</span>
-                        </button>
+                        <button onclick="changeView('gifs-new')" id="nav-gifs-new" class="nav-btn w-full flex items-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-dark-700 transition-colors"><i class="ph ph-sparkle text-lg flex-shrink-0"></i><span class="ml-3 text-sm truncate">New Style</span></button>
+                        <button onclick="changeView('gifs-girls')" id="nav-gifs-girls" class="nav-btn w-full flex items-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-dark-700 transition-colors"><i class="ph ph-crown text-lg flex-shrink-0"></i><span class="ml-3 text-sm truncate">Girls</span></button>
+                        <button onclick="changeView('gifs-boys')" id="nav-gifs-boys" class="nav-btn w-full flex items-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-dark-700 transition-colors"><i class="ph ph-soccer-ball text-lg flex-shrink-0"></i><span class="ml-3 text-sm truncate">Boys</span></button>
+                        <button onclick="changeView('gifs-dj')" id="nav-gifs-dj" class="nav-btn w-full flex items-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-dark-700 transition-colors"><i class="ph ph-headphones text-lg flex-shrink-0"></i><span class="ml-3 text-sm truncate">DJ</span></button>
+                        <button onclick="changeView('gifs-lovers')" id="nav-gifs-lovers" class="nav-btn w-full flex items-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-dark-700 transition-colors"><i class="ph ph-heart text-lg flex-shrink-0"></i><span class="ml-3 text-sm truncate">Lovers</span></button>
+                        <button onclick="changeView('gifs-christmas')" id="nav-gifs-christmas" class="nav-btn w-full flex items-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-dark-700 transition-colors"><i class="ph ph-tree-evergreen text-lg flex-shrink-0"></i><span class="ml-3 text-sm truncate">Christmas</span></button>
+                        <button onclick="changeView('gifs-halloween')" id="nav-gifs-halloween" class="nav-btn w-full flex items-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-dark-700 transition-colors"><i class="ph ph-ghost text-lg flex-shrink-0"></i><span class="ml-3 text-sm truncate">Halloween</span></button>
+                        <button onclick="changeView('gifs-mixed')" id="nav-gifs-mixed" class="nav-btn w-full flex items-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-dark-700 transition-colors"><i class="ph ph-trophy text-lg flex-shrink-0"></i><span class="ml-3 text-sm truncate">Mixed</span></button>
                     </div>
                 </div>
-
-                <button onclick="changeView('pcback')" id="nav-pcback" class="nav-btn w-full flex items-center p-2 lg:p-3 rounded-lg text-gray-300 hover:text-white hover:bg-dark-700 transition-colors group mt-2">
-                    <i class="ph ph-desktop text-xl lg:text-2xl group-hover:text-brand-500 transition-colors flex-shrink-0"></i>
-                    <span class="hidden lg:block ml-3 font-medium text-sm truncate">PCBACK</span>
-                </button>
-
-                <button onclick="changeView('fondo')" id="nav-fondo" class="nav-btn w-full flex items-center p-2 lg:p-3 rounded-lg text-gray-300 hover:text-white hover:bg-dark-700 transition-colors group">
+                <div class="w-full mt-2">
+                    <button onclick="toggleMenu('pcback')" class="w-full flex items-center p-2 lg:p-3 rounded-lg text-gray-300 hover:text-white hover:bg-dark-700 transition-colors group">
+                        <i class="ph ph-desktop text-xl lg:text-2xl text-brand-400 flex-shrink-0"></i>
+                        <span class="hidden lg:block ml-3 font-medium text-sm truncate">PCBACK</span>
+                        <i id="pcback-caret" class="ph ph-caret-down hidden lg:block ml-auto transition-transform duration-300 flex-shrink-0"></i>
+                    </button>
+                    <div id="pcback-submenu" class="submenu-transition hidden lg:flex flex-col space-y-1 mt-1 border-l-2 border-dark-700 ml-5 pl-2 w-full">
+                        <button onclick="changeView('pcback-normal')" id="nav-pcback-normal" class="nav-btn w-full flex items-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-dark-700 transition-colors"><i class="ph ph-image-square text-lg flex-shrink-0"></i><span class="ml-3 text-sm truncate">Pcback</span></button>
+                        <button onclick="changeView('pcback-animados')" id="nav-pcback-animados" class="nav-btn w-full flex items-center p-2 rounded-lg text-gray-400 hover:text-white hover:bg-dark-700 transition-colors"><i class="ph ph-play-circle text-lg flex-shrink-0"></i><span class="ml-3 text-sm truncate">Animados</span></button>
+                    </div>
+                </div>
+                <button onclick="changeView('fondo')" id="nav-fondo" class="nav-btn w-full flex items-center p-2 lg:p-3 rounded-lg text-gray-300 hover:text-white hover:bg-dark-700 transition-colors group mt-2">
                     <i class="ph ph-image text-xl lg:text-2xl group-hover:text-brand-500 transition-colors flex-shrink-0"></i>
                     <span class="hidden lg:block ml-3 font-medium text-sm truncate">FONDOS</span>
                 </button>
@@ -108,9 +87,7 @@
         <header class="h-20 border-b border-dark-700 flex items-center px-4 md:px-8 sticky top-0 bg-dark-900/90 backdrop-blur-md z-10 w-full flex-shrink-0">
             <h1 id="page-title" class="text-xl md:text-2xl font-semibold text-white tracking-wide truncate w-full">Diseños</h1>
         </header>
-
-        <div id="content-area" class="p-4 md:p-6 lg:p-8 w-full max-w-7xl mx-auto flex-1 min-w-0">
-        </div>
+        <div id="content-area" class="p-4 md:p-6 lg:p-8 w-full max-w-7xl mx-auto flex-1 min-w-0"></div>
     </main>
 
     <div id="lightbox" onclick="closeLightbox()" class="fixed inset-0 z-[100] hidden bg-black/95 backdrop-blur-sm flex items-center justify-center opacity-0 transition-opacity duration-300">
@@ -123,20 +100,15 @@
         <button onclick="event.stopPropagation(); nextImage()" class="absolute right-2 sm:right-4 lg:right-8 text-gray-400 hover:text-white transition-colors bg-dark-800/80 hover:bg-brand-600 p-2 sm:p-3 lg:p-4 rounded-full shadow-lg z-50">
             <i class="ph ph-caret-right text-2xl lg:text-4xl"></i>
         </button>
-
         <div class="relative w-full max-w-[95vw] sm:max-w-[85vw] max-h-[85vh] flex flex-col items-center justify-center pointer-events-none">
-            <img id="lightbox-img" draggable="false" class="max-h-[80vh] max-w-full object-contain drop-shadow-2xl rounded-lg pointer-events-auto">
+            <img id="lightbox-img" class="max-h-[80vh] max-w-full object-contain drop-shadow-2xl rounded-lg pointer-events-auto">
             <div id="lightbox-caption" class="absolute -bottom-16 left-1/2 -translate-x-1/2 bg-brand-600 px-4 py-2 sm:px-6 sm:py-2 rounded-full text-white font-bold text-sm sm:text-base tracking-wide shadow-lg border border-brand-400 whitespace-nowrap"></div>
         </div>
     </div>
 
     <script>
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        document.addEventListener('dragstart', e => e.preventDefault());
-        document.addEventListener('selectstart', e => e.preventDefault());
-        document.addEventListener('keydown', e => {
-            if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'||e.key==='C'))||(e.ctrlKey&&(e.key==='U'||e.key==='S'||e.key==='P'||e.key==='C'||e.key==='A'))||(e.metaKey&&(e.key==='u'||e.key==='s'||e.key==='p'||e.key==='c'||e.key==='a'))||(e.metaKey&&e.altKey&&(e.key==='i'||e.key==='j'||e.key==='c'))){e.preventDefault();return false;}
-        });
+        document.addEventListener('contextmenu', e=>e.preventDefault());
+        document.addEventListener('keydown', e=>{if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'||e.key==='C'))||(e.ctrlKey&&(e.key==='U'||e.key==='S'||e.key==='P'||e.key==='C'||e.key==='A'))||(e.metaKey&&(e.key==='u'||e.key==='s'||e.key==='p'||e.key==='c'||e.key==='a'))||(e.metaKey&&e.altKey&&(e.key==='i'||e.key==='j'||e.key==='c'))){e.preventDefault();return false;}});
 
         // ==========================================
         // BASE DE DATOS DE LINKS: EDITA AQUI
@@ -265,10 +237,17 @@
                 { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" },
                 { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }
             ]},
-            'pcback': { marquee: "🖥️ PCBACK 🖥️", prefix: "PC-", items: [
+            'pcback-normal': { marquee: "🖥️ PCBACK 🖥️", prefix: "PC-", items: [
                 { url: "https://live.staticflickr.com/65535/48482649342_44de191e32_z.jpg" },
+                { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" },
+                { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" },
+                { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" },
+                { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" },
+                { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }
+            ]},
+            'pcback-animados': { marquee: "🖥️ PCBACK ANIMADOS 🖥️", prefix: "PCA-", items: [
                 { url: "https://live.staticflickr.com/65535/49901898596_b3e63f20ca_c.jpg" },
-                { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" },
+                { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" },
                 { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" },
                 { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" },
                 { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" }, { url: "inserte link aquí" },
@@ -285,15 +264,15 @@
             ]}
         };
 
-        const viewHome = `<div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 w-full"><div class="bg-dark-800 rounded-2xl border border-dark-700 shadow-lg col-span-1 md:col-span-2 overflow-hidden card-hover"><div class="p-4 md:p-6 pb-4 border-b border-dark-700 flex justify-between items-center bg-dark-700/30"><div><h2 class="text-xl md:text-2xl font-bold text-white mb-1">GIFS</h2></div><i class="ph ph-gif text-3xl md:text-4xl text-brand-500"></i></div><div class="p-4 md:p-5 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 md:gap-3"><button onclick="changeView('gifs-new')" class="relative flex flex-col items-center justify-center p-3 md:p-4 rounded-xl border border-dark-700 hover:border-brand-500 overflow-hidden group h-20 md:h-24 bg-dark-900"><img src="https://i.imgur.com/kCHPefP.gif" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-50 transition-opacity" draggable="false"><div class="relative z-10 flex flex-col items-center"><i class="ph ph-sparkle text-2xl md:text-3xl mb-1 md:mb-2 text-gray-300 group-hover:text-white"></i><span class="text-[10px] md:text-xs font-semibold text-gray-300 group-hover:text-white drop-shadow-md truncate">New Style</span></div></button><button onclick="changeView('gifs-girls')" class="relative flex flex-col items-center justify-center p-3 md:p-4 rounded-xl border border-dark-700 hover:border-brand-500 overflow-hidden group h-20 md:h-24 bg-dark-900"><img src="https://i.imgur.com/hljCHn0.gif" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-50 transition-opacity" draggable="false"><div class="relative z-10 flex flex-col items-center"><i class="ph ph-crown text-2xl md:text-3xl mb-1 md:mb-2 text-gray-300 group-hover:text-white"></i><span class="text-[10px] md:text-xs font-semibold text-gray-300 group-hover:text-white drop-shadow-md truncate">Girls</span></div></button><button onclick="changeView('gifs-boys')" class="relative flex flex-col items-center justify-center p-3 md:p-4 rounded-xl border border-dark-700 hover:border-brand-500 overflow-hidden group h-20 md:h-24 bg-dark-900"><img src="https://i.imgur.com/TuM4M0Y.gif" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-50 transition-opacity" draggable="false"><div class="relative z-10 flex flex-col items-center"><i class="ph ph-soccer-ball text-2xl md:text-3xl mb-1 md:mb-2 text-gray-300 group-hover:text-white"></i><span class="text-[10px] md:text-xs font-semibold text-gray-300 group-hover:text-white drop-shadow-md truncate">Boys</span></div></button><button onclick="changeView('gifs-dj')" class="relative flex flex-col items-center justify-center p-3 md:p-4 rounded-xl border border-dark-700 hover:border-brand-500 overflow-hidden group h-20 md:h-24 bg-dark-900"><img src="https://i.imgur.com/aEWCfBv.gif" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-50 transition-opacity" draggable="false"><div class="relative z-10 flex flex-col items-center"><i class="ph ph-headphones text-2xl md:text-3xl mb-1 md:mb-2 text-gray-300 group-hover:text-white"></i><span class="text-[10px] md:text-xs font-semibold text-gray-300 group-hover:text-white drop-shadow-md truncate">DJ</span></div></button><button onclick="changeView('gifs-lovers')" class="relative flex flex-col items-center justify-center p-3 md:p-4 rounded-xl border border-dark-700 hover:border-brand-500 overflow-hidden group h-20 md:h-24 bg-dark-900"><img src="https://i.imgur.com/Ep5rHb0.gif" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-50 transition-opacity" draggable="false"><div class="relative z-10 flex flex-col items-center"><i class="ph ph-heart text-2xl md:text-3xl mb-1 md:mb-2 text-gray-300 group-hover:text-white"></i><span class="text-[10px] md:text-xs font-semibold text-gray-300 group-hover:text-white drop-shadow-md truncate">Lovers</span></div></button><button onclick="changeView('gifs-christmas')" class="relative flex flex-col items-center justify-center p-3 md:p-4 rounded-xl border border-dark-700 hover:border-brand-500 overflow-hidden group h-20 md:h-24 bg-dark-900"><img src="https://i.imgur.com/scFUgeO.gif" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-50 transition-opacity" draggable="false"><div class="relative z-10 flex flex-col items-center"><i class="ph ph-tree-evergreen text-2xl md:text-3xl mb-1 md:mb-2 text-gray-300 group-hover:text-white"></i><span class="text-[10px] md:text-xs font-semibold text-gray-300 group-hover:text-white drop-shadow-md truncate">Christmas</span></div></button><button onclick="changeView('gifs-halloween')" class="relative flex flex-col items-center justify-center p-3 md:p-4 rounded-xl border border-dark-700 hover:border-brand-500 overflow-hidden group h-20 md:h-24 bg-dark-900"><img src="https://i.imgur.com/mUyGHFF.gif" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-50 transition-opacity" draggable="false"><div class="relative z-10 flex flex-col items-center"><i class="ph ph-ghost text-2xl md:text-3xl mb-1 md:mb-2 text-gray-300 group-hover:text-white"></i><span class="text-[10px] md:text-xs font-semibold text-gray-300 group-hover:text-white drop-shadow-md truncate">Halloween</span></div></button><button onclick="changeView('gifs-mixed')" class="relative flex flex-col items-center justify-center p-3 md:p-4 rounded-xl border border-dark-700 hover:border-brand-500 overflow-hidden group h-20 md:h-24 bg-dark-900"><img src="https://i.imgur.com/2bISAr5.gif" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-50 transition-opacity" draggable="false"><div class="relative z-10 flex flex-col items-center"><i class="ph ph-trophy text-2xl md:text-3xl mb-1 md:mb-2 text-gray-300 group-hover:text-white"></i><span class="text-[10px] md:text-xs font-semibold text-gray-300 group-hover:text-white drop-shadow-md truncate">Mixed</span></div></button></div></div><div class="bg-dark-800 rounded-2xl border border-dark-700 overflow-hidden card-hover cursor-pointer relative shadow-lg group" onclick="changeView('pcback')"><div class="h-40 md:h-48 relative overflow-hidden flex"><div class="w-1/2 h-full"><img src="https://live.staticflickr.com/65535/48482649342_44de191e32_z.jpg" class="w-full h-full object-cover opacity-50 group-hover:opacity-90 transition-opacity" draggable="false"></div><div class="w-1/2 h-full"><img src="https://live.staticflickr.com/65535/49901898596_b3e63f20ca_c.jpg" class="w-full h-full object-cover opacity-50 group-hover:opacity-90 transition-opacity" draggable="false"></div><div class="absolute inset-0 bg-gradient-to-t from-dark-800 via-dark-800/40 to-transparent pointer-events-none"></div></div><div class="absolute bottom-0 left-0 p-4 md:p-6 z-10 w-full"><h2 class="text-2xl md:text-3xl font-bold text-white drop-shadow-md">PCBACK</h2></div></div><div class="bg-dark-800 rounded-2xl border border-dark-700 overflow-hidden card-hover cursor-pointer relative shadow-lg group" onclick="changeView('fondo')"><div class="h-40 md:h-48 relative overflow-hidden flex"><div class="w-1/2 h-full"><img src="https://live.staticflickr.com/65535/50681821506_464d2fc37b_c.jpg" class="w-full h-full object-cover opacity-50 group-hover:opacity-90 transition-opacity" draggable="false"></div><div class="w-1/2 h-full"><img src="https://live.staticflickr.com/65535/50681061508_106f8e75a6_c.jpg" class="w-full h-full object-cover opacity-50 group-hover:opacity-90 transition-opacity" draggable="false"></div><div class="absolute inset-0 bg-gradient-to-t from-dark-800 via-dark-800/40 to-transparent pointer-events-none"></div></div><div class="absolute bottom-0 left-0 p-4 md:p-6 z-10 w-full"><h2 class="text-2xl md:text-3xl font-bold text-white drop-shadow-md">FONDOS</h2></div></div></div>`;
+        const viewHome = `<div class="flex flex-col w-full"><div class="bg-dark-800 rounded-2xl border border-dark-700 shadow-lg overflow-hidden card-hover mb-4 md:mb-6"><div class="p-4 md:p-6 pb-4 border-b border-dark-700 flex justify-between items-center bg-dark-700/30"><div><h2 class="text-xl md:text-2xl font-bold text-white mb-1">GIFS</h2></div><i class="ph ph-gif text-3xl md:text-4xl text-brand-500"></i></div><div class="p-4 md:p-5 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 md:gap-3"><button onclick="changeView('gifs-new')" class="relative flex flex-col items-center justify-center p-3 md:p-4 rounded-xl border border-dark-700 hover:border-brand-500 overflow-hidden group h-20 md:h-24 bg-dark-900"><img src="https://i.imgur.com/kCHPefP.gif" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-50 transition-opacity" draggable="false"><div class="relative z-10 flex flex-col items-center"><i class="ph ph-sparkle text-2xl md:text-3xl mb-1 md:mb-2 text-gray-300 group-hover:text-white"></i><span class="text-[10px] md:text-xs font-semibold text-gray-300 group-hover:text-white drop-shadow-md truncate">New Style</span></div></button><button onclick="changeView('gifs-girls')" class="relative flex flex-col items-center justify-center p-3 md:p-4 rounded-xl border border-dark-700 hover:border-brand-500 overflow-hidden group h-20 md:h-24 bg-dark-900"><img src="https://i.imgur.com/hljCHn0.gif" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-50 transition-opacity" draggable="false"><div class="relative z-10 flex flex-col items-center"><i class="ph ph-crown text-2xl md:text-3xl mb-1 md:mb-2 text-gray-300 group-hover:text-white"></i><span class="text-[10px] md:text-xs font-semibold text-gray-300 group-hover:text-white drop-shadow-md truncate">Girls</span></div></button><button onclick="changeView('gifs-boys')" class="relative flex flex-col items-center justify-center p-3 md:p-4 rounded-xl border border-dark-700 hover:border-brand-500 overflow-hidden group h-20 md:h-24 bg-dark-900"><img src="https://i.imgur.com/TuM4M0Y.gif" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-50 transition-opacity" draggable="false"><div class="relative z-10 flex flex-col items-center"><i class="ph ph-soccer-ball text-2xl md:text-3xl mb-1 md:mb-2 text-gray-300 group-hover:text-white"></i><span class="text-[10px] md:text-xs font-semibold text-gray-300 group-hover:text-white drop-shadow-md truncate">Boys</span></div></button><button onclick="changeView('gifs-dj')" class="relative flex flex-col items-center justify-center p-3 md:p-4 rounded-xl border border-dark-700 hover:border-brand-500 overflow-hidden group h-20 md:h-24 bg-dark-900"><img src="https://i.imgur.com/aEWCfBv.gif" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-50 transition-opacity" draggable="false"><div class="relative z-10 flex flex-col items-center"><i class="ph ph-headphones text-2xl md:text-3xl mb-1 md:mb-2 text-gray-300 group-hover:text-white"></i><span class="text-[10px] md:text-xs font-semibold text-gray-300 group-hover:text-white drop-shadow-md truncate">DJ</span></div></button><button onclick="changeView('gifs-lovers')" class="relative flex flex-col items-center justify-center p-3 md:p-4 rounded-xl border border-dark-700 hover:border-brand-500 overflow-hidden group h-20 md:h-24 bg-dark-900"><img src="https://i.imgur.com/Ep5rHb0.gif" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-50 transition-opacity" draggable="false"><div class="relative z-10 flex flex-col items-center"><i class="ph ph-heart text-2xl md:text-3xl mb-1 md:mb-2 text-gray-300 group-hover:text-white"></i><span class="text-[10px] md:text-xs font-semibold text-gray-300 group-hover:text-white drop-shadow-md truncate">Lovers</span></div></button><button onclick="changeView('gifs-christmas')" class="relative flex flex-col items-center justify-center p-3 md:p-4 rounded-xl border border-dark-700 hover:border-brand-500 overflow-hidden group h-20 md:h-24 bg-dark-900"><img src="https://i.imgur.com/scFUgeO.gif" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-50 transition-opacity" draggable="false"><div class="relative z-10 flex flex-col items-center"><i class="ph ph-tree-evergreen text-2xl md:text-3xl mb-1 md:mb-2 text-gray-300 group-hover:text-white"></i><span class="text-[10px] md:text-xs font-semibold text-gray-300 group-hover:text-white drop-shadow-md truncate">Christmas</span></div></button><button onclick="changeView('gifs-halloween')" class="relative flex flex-col items-center justify-center p-3 md:p-4 rounded-xl border border-dark-700 hover:border-brand-500 overflow-hidden group h-20 md:h-24 bg-dark-900"><img src="https://i.imgur.com/mUyGHFF.gif" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-50 transition-opacity" draggable="false"><div class="relative z-10 flex flex-col items-center"><i class="ph ph-ghost text-2xl md:text-3xl mb-1 md:mb-2 text-gray-300 group-hover:text-white"></i><span class="text-[10px] md:text-xs font-semibold text-gray-300 group-hover:text-white drop-shadow-md truncate">Halloween</span></div></button><button onclick="changeView('gifs-mixed')" class="relative flex flex-col items-center justify-center p-3 md:p-4 rounded-xl border border-dark-700 hover:border-brand-500 overflow-hidden group h-20 md:h-24 bg-dark-900"><img src="https://i.imgur.com/2bISAr5.gif" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-50 transition-opacity" draggable="false"><div class="relative z-10 flex flex-col items-center"><i class="ph ph-trophy text-2xl md:text-3xl mb-1 md:mb-2 text-gray-300 group-hover:text-white"></i><span class="text-[10px] md:text-xs font-semibold text-gray-300 group-hover:text-white drop-shadow-md truncate">Mixed</span></div></button></div></div><div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 w-full"><div class="bg-dark-800 rounded-2xl border border-dark-700 overflow-hidden card-hover cursor-pointer relative shadow-lg group h-40 md:h-48" onclick="changeView('pcback-normal')"><div class="absolute inset-0 flex"><div class="w-1/2 h-full"><img src="https://live.staticflickr.com/65535/48482649342_44de191e32_z.jpg" class="w-full h-full object-cover opacity-50 group-hover:opacity-90 transition-opacity" draggable="false"></div><div class="w-1/2 h-full"><img src="https://live.staticflickr.com/65535/49901898596_b3e63f20ca_c.jpg" class="w-full h-full object-cover opacity-50 group-hover:opacity-90 transition-opacity" draggable="false"></div></div><div class="absolute inset-0 bg-gradient-to-t from-dark-800 via-dark-800/40 to-transparent pointer-events-none"></div><div class="absolute bottom-0 left-0 p-4 md:p-6 z-10 w-full"><h2 class="text-xl md:text-2xl font-bold text-white drop-shadow-md truncate">PCBACK</h2></div></div><div class="bg-dark-800 rounded-2xl border border-dark-700 overflow-hidden card-hover cursor-pointer relative shadow-lg group h-40 md:h-48" onclick="changeView('pcback-animados')"><div class="absolute inset-0 flex"><div class="w-1/2 h-full"><img src="https://live.staticflickr.com/65535/48482649342_44de191e32_z.jpg" class="w-full h-full object-cover opacity-50 group-hover:opacity-90 transition-opacity" draggable="false"></div><div class="w-1/2 h-full"><img src="https://live.staticflickr.com/65535/49901898596_b3e63f20ca_c.jpg" class="w-full h-full object-cover opacity-50 group-hover:opacity-90 transition-opacity" draggable="false"></div></div><div class="absolute inset-0 bg-gradient-to-t from-dark-800 via-dark-800/40 to-transparent pointer-events-none"></div><div class="absolute bottom-0 left-0 p-4 md:p-6 z-10 w-full"><h2 class="text-xl md:text-2xl font-bold text-white drop-shadow-md truncate">ANIMADOS</h2></div></div></div><div class="flex justify-center w-full mt-4 md:mt-6"><div class="w-full md:w-1/2 bg-dark-800 rounded-2xl border border-dark-700 overflow-hidden card-hover cursor-pointer relative shadow-lg group h-40 md:h-48" onclick="changeView('fondo')"><div class="absolute inset-0 flex"><div class="w-1/2 h-full"><img src="https://live.staticflickr.com/65535/50681821506_464d2fc37b_c.jpg" class="w-full h-full object-cover opacity-50 group-hover:opacity-90 transition-opacity" draggable="false"></div><div class="w-1/2 h-full"><img src="https://live.staticflickr.com/65535/50681061508_106f8e75a6_c.jpg" class="w-full h-full object-cover opacity-50 group-hover:opacity-90 transition-opacity" draggable="false"></div></div><div class="absolute inset-0 bg-gradient-to-t from-dark-800 via-dark-800/40 to-transparent pointer-events-none"></div><div class="absolute bottom-0 left-0 p-4 md:p-6 z-10 w-full"><h2 class="text-xl md:text-2xl font-bold text-white drop-shadow-md truncate">FONDOS</h2></div></div></div></div>`;
 
         const contentArea = document.getElementById('content-area');
         const pageTitle = document.getElementById('page-title');
         let currentLightboxImages = [];
         let currentLightboxIndex = 0;
 
-        function toggleGifsMenu(){const m=document.getElementById('gifs-submenu');const c=document.getElementById('gifs-caret');if(m.classList.contains('submenu-open')){m.classList.remove('submenu-open');c.classList.remove('rotate-180');}else{m.classList.add('submenu-open');c.classList.add('rotate-180');}}
-        function openGifsMenuIfClosed(){const m=document.getElementById('gifs-submenu');const c=document.getElementById('gifs-caret');if(!m.classList.contains('submenu-open')){m.classList.add('submenu-open');c.classList.add('rotate-180');}}
+        function toggleMenu(id){const m=document.getElementById(id+'-submenu');const c=document.getElementById(id+'-caret');if(m.classList.contains('submenu-open')){m.classList.remove('submenu-open');c.classList.remove('rotate-180');}else{m.classList.add('submenu-open');c.classList.add('rotate-180');}}
+        function openMenuIfClosed(id){const m=document.getElementById(id+'-submenu');const c=document.getElementById(id+'-caret');if(!m.classList.contains('submenu-open')){m.classList.add('submenu-open');c.classList.add('rotate-180');}}
         function updateActiveNav(id){document.querySelectorAll('.nav-btn').forEach(b=>{b.classList.remove('bg-dark-700','text-white');b.classList.add('text-gray-300');});const a=document.getElementById(`nav-${id}`);if(a){a.classList.add('bg-dark-700','text-white');a.classList.remove('text-gray-300');}}
 
         function initLazyLoad(){
@@ -305,7 +284,7 @@
 
         function generateGallery(k){
             const c=categoriesData[k];if(!c)return'';
-            const g=['pcback','fondo'].includes(k);
+            const g=['pcback-normal','pcback-animados','fondo'].includes(k);
             const cl=g?"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full":"grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 md:gap-5 w-full";
             let h=`<div class="mb-12 w-full"><div class="flex items-center mb-6 md:mb-8"><div class="h-6 md:h-8 w-1.5 md:w-2 bg-brand-500 rounded-full mr-3 md:mr-4 shadow-[0_0_10px_rgba(59,130,246,0.6)]"></div><h2 class="text-lg md:text-2xl font-display text-white tracking-wide truncate">${c.marquee}</h2></div><div class="${cl}">`;
             const s="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E";
@@ -344,9 +323,10 @@
         function changeView(v){
             updateActiveNav(v);contentArea.style.opacity=0;
             setTimeout(()=>{
-                if(v==='home'){pageTitle.textContent="Diseños";contentArea.innerHTML=viewHome;const m=document.getElementById('gifs-submenu');if(m&&m.classList.contains('submenu-open'))toggleGifsMenu();}
-                else if(v.startsWith('gifs-')){openGifsMenuIfClosed();const k=v.replace('gifs-','');const c=categoriesData[k];const t=c.marquee.replace(/[^a-zA-Z\s\-]/g,'').trim();pageTitle.innerHTML=`Galería <span class="text-gradient font-display tracking-widest ml-1 md:ml-2">${t}</span>`;contentArea.innerHTML=generateGallery(k);initLazyLoad();}
-                else if(v==='pcback'||v==='fondo'){const c=categoriesData[v];const t=c.marquee.replace(/[^a-zA-Z\s\-]/g,'').trim();pageTitle.innerHTML=`Galería <span class="text-gradient font-display tracking-widest ml-1 md:ml-2">${t}</span>`;contentArea.innerHTML=generateGallery(v);initLazyLoad();}
+                if(v==='home'){pageTitle.textContent="Diseños";contentArea.innerHTML=viewHome;const m1=document.getElementById('gifs-submenu');if(m1&&m1.classList.contains('submenu-open'))toggleMenu('gifs');const m2=document.getElementById('pcback-submenu');if(m2&&m2.classList.contains('submenu-open'))toggleMenu('pcback');}
+                else if(v.startsWith('gifs-')){openMenuIfClosed('gifs');const k=v.replace('gifs-','');const c=categoriesData[k];const t=c.marquee.replace(/[^a-zA-Z\s\-]/g,'').trim();pageTitle.innerHTML=`Galería <span class="text-gradient font-display tracking-widest ml-1 md:ml-2">${t}</span>`;contentArea.innerHTML=generateGallery(k);initLazyLoad();}
+                else if(v.startsWith('pcback-')){openMenuIfClosed('pcback');const c=categoriesData[v];const t=c.marquee.replace(/[^a-zA-Z\s\-]/g,'').trim();pageTitle.innerHTML=`Galería <span class="text-gradient font-display tracking-widest ml-1 md:ml-2">${t}</span>`;contentArea.innerHTML=generateGallery(v);initLazyLoad();}
+                else if(v==='fondo'){const c=categoriesData[v];const t=c.marquee.replace(/[^a-zA-Z\s\-]/g,'').trim();pageTitle.innerHTML=`Galería <span class="text-gradient font-display tracking-widest ml-1 md:ml-2">${t}</span>`;contentArea.innerHTML=generateGallery(v);initLazyLoad();}
                 contentArea.style.opacity=1;contentArea.style.transition='opacity 0.3s ease-in-out';
             },150);
         }
